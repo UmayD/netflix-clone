@@ -1,12 +1,16 @@
 import React from "react";
 import "./globals.css";
 import MainContent from "@/components/MainContent";
+import Row from "@/components/Row";
+import movieRequest from "@/src/utils/MovieRequests";
 
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <>
       <MainContent />
-    </main>
+      <Row title={"Popular"} fetchURL={movieRequest.requestPopular} />
+      <Row title={"Top Rated"} fetchURL={movieRequest.requestTopRated} />
+    </>
   )
 }
