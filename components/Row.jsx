@@ -1,11 +1,15 @@
 "use client";
 import React, { useState } from "react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import useSWR from "swr";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Row = ({ title, fetchURL }) => {
   const { data, error } = useSWR(fetchURL, fetcher);
+
+  const [like, setLike] = useState(false);
 
   if (error) return <div className="text-white">Failed to load</div>;
   if (!data) return <div className="text-white">Loading...</div>;
@@ -25,7 +29,16 @@ const Row = ({ title, fetchURL }) => {
                   alt={item?.title}
                 />
                 <div className="absolute left-0 top-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100">
-                  <p className="text-white md:text-sm whitespace-normal font-bold flex justify-center items-center h-full text-center">{item?.title}</p>
+                  <p>
+                    {like ? (
+                      <FavoriteIcon className="absolute top-4 left-4 text-gray-300" />
+                    ) : (
+                      <FavoriteBorderIcon className="absolute top-4 left-4 text-gray-300" />
+                    )}
+                  </p>
+                  <p className="text-white md:text-sm whitespace-normal font-bold flex justify-center items-center h-full text-center">
+                    {item?.title}
+                  </p>
                 </div>
               </div>
             );
