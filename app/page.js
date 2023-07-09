@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <MainContent />
-      <Row title={"Popular"} fetchURL={movieRequest.requestPopular} />
-      <Row title={"Top Rated"} fetchURL={movieRequest.requestTopRated} />
+      <Row rowID={1} title={"Popular"} fetchURL={movieRequest.requestPopular} />
+      <Row rowID={2} title={"Top Rated"} fetchURL={movieRequest.requestTopRated} />
     </>
   )
 }
