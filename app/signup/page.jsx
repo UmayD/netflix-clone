@@ -1,7 +1,27 @@
+"use client"
 import Navbar from "@/components/Navbar";
-import React from "react";
+import { UserAuth } from "@/src/context/AuthContext";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const {user, signUp} = UserAuth();
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try{
+      await signUp(email, password);
+      router.push("/")
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <>
       <div className="w-full h-screen">
@@ -27,14 +47,21 @@ const Signup = () => {
                 </span>
               </p>
 
-              <form className="flex justify-center items-center">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-y-5 justify-center items-center">
                 <input
-                  className="bg-gray-900/50 outline outline-1 text-m rounded px-4 py-2.5 mr-3"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-gray-900/50 w-full outline outline-1 text-m rounded px-4 py-2.5 mr-3"
                   type="email"
                   placeholder="Email address"
                 />
-                <button className="bg-netred text-2xl font-semibold px-4 py-2 rounded">
-                  Get Started &gt;
+                <input
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="bg-gray-900/50 w-full outline outline-1 text-m rounded px-4 py-2.5 mr-3"
+                  type="password"
+                  placeholder="Password"
+                />
+                <button className="bg-netred text-xl px-5 py-2 rounded">
+                  Get Started
                 </button>
               </form>
             </div>
