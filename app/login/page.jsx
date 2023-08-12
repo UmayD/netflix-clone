@@ -52,7 +52,7 @@ const Login = () => {
 
               <div className="w-full">
                 <p className="pt-6"><span className="text-gray-600">New to Netflix?</span></p>
-                <p className='pt-2'><span className='text-gray-600 text-xs'>This page is protected by Google reCAPTCHA to ensure you're not a bot.</span></p>
+                <p className='pt-2'><span className='text-gray-600 text-xs'>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot.</span></p>
               </div>
             </div>
           </div>
