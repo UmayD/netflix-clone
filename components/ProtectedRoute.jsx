@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
   const router = useRouter();
 
   if (!user) {
-    router.push("/login");
+    router.push("/signup");
   }
   else {
     return children;
