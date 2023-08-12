@@ -19,11 +19,13 @@ module.exports = {
     colors: {
       netred: "#E50914",
       netredHover: "#C11119",
+      textColor: "#8C8C8C",
       inputbg: "#333",
       red: colors.red,
       black: colors.black,
       gray: colors.gray,
       white: colors.white,
+      blue: colors.blue,
     },
   },
   plugins: [],
