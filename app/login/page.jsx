@@ -1,6 +1,27 @@
-import React from 'react'
+"use client";
+import React, { useState } from 'react';
+import { UserAuth } from '@/src/context/AuthContext';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const {user, logIn} = UserAuth();
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('');
+    try{
+      await logIn(email, password);
+      router.push("/")
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
+  };
+
   return (
     <>
       <div className="w-full h-screen">
@@ -15,9 +36,11 @@ const Login = () => {
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-3xl font-semibold">Sign In</h1>
 
-              <form className="flex flex-col py-5 w-full">
-                <input className="p-4 my-2 rounded bg-inputbg" type="email" placeholder="Email" />
-                <input className="p-4 my-2 rounded bg-inputbg" type="password" placeholder="Password"/>
+              <form onSubmit={handleSubmit} className="flex flex-col py-5 w-full">
+                <input onChange={(e) => setEmail(e.target.value)} className="p-4 my-2 rounded bg-inputbg" type="email" placeholder="Email" />
+                <input onChange={(e) => setPassword(e.target.value)} className="p-4 my-2 rounded bg-inputbg" type="password" placeholder="Password"/>
+
+                {error ? <p className='text-red-400 text-sm pt-1 pl-1'>{error}</p> : null}
 
                 <button className="bg-red-600 py-3 mt-6 rounded">Sign In</button>
                 
