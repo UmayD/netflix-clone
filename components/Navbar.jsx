@@ -19,9 +19,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between px-6 py-4 z-[100] w-full absolute">
-      <Link href={"/"}>
-        <h1 className="text-netred text-4xl font-bold">NETFLIX</h1>
+    <div className="flex items-center justify-between px-8 py-6 z-[100] w-full absolute">
+      <Link className="w-[150px]" href={"/"}>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="" />
       </Link>
 
       {user?.email ? (
@@ -43,7 +43,7 @@ const Navbar = () => {
           </Link>
 
           <Link href={"/login"}>
-            <button className="bg-netred px-4 py-1 rounded cursor-pointer text-white">
+            <button className="bg-netred px-4 py-1 rounded cursor-pointer text-white hover:bg-netredHover">
               Sign In
             </button>
           </Link>
