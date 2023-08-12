@@ -60,7 +60,7 @@ const Signup = () => {
                   type="password"
                   placeholder="Password"
                 />
-                <button className="bg-netred text-xl px-5 py-2 rounded">
+                <button className="bg-netred text-xl px-5 py-2 rounded hover:bg-netredHover">
                   Get Started
                 </button>
               </form>
