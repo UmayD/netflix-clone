@@ -12,7 +12,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logOut();
-      router.push("/");
+      router.push("/login");
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +30,7 @@ const Navbar = () => {
             <button className="text-white pr-4">Account</button>
           </Link>
 
-          <Link href={"/"}>
+          <Link href={"/login"}>
             <button onClick={handleLogout} className="bg-netred px-4 py-1 rounded cursor-pointer text-white">
               Logout
             </button>
