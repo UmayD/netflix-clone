@@ -18,6 +18,7 @@ module.exports = {
     },
     colors: {
       netred: "#E50914",
+      netredHover: "#C11119",
       inputbg: "#333",
       red: colors.red,
       black: colors.black,
